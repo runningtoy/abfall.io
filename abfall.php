@@ -17,6 +17,7 @@ const ABFALL_IO_KEY = "e2b5b0f129dde22e1993abc2aa4654f8";
 $io['f_id_kommune']            = '2785';
 $io['f_id_bezirk']             = '2331';
 $io['f_id_strasse']            = '2332';
+//$io['f_id_strasse_hnr']        = '0';
 $io['f_id_abfalltyp_0']        = '20';
 $io['f_id_abfalltyp_3']        = '279';
 $io['f_id_abfalltyp_4']        = '19';
@@ -64,7 +65,7 @@ foreach ($io as $key => $entry) {
 }
 
 $request = implode('&', $params);
-$url     = 'https://api.abfall.io/?key=e2b5b0f129dde22e1993abc2aa4654f8&modus=d6c5855a62cf32a4dadbc2831f0f295f&waction=export_ics';
+$url     = 'https://api.abfall.io/?key='.ABFALL_IO_KEY.'&modus=d6c5855a62cf32a4dadbc2831f0f295f&waction=export_ics';
 $res     = ServiceRequest($url, $request);
 #echo $res;
 file_put_contents('abfall.ics', $res);
