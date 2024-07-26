@@ -120,7 +120,7 @@ function GetDocument($url, $request)
         $dom = new DOMDocument();
         // disable libxml errors
         libxml_use_internal_errors(true);
-        $dom->loadHTML(mb_convert_encoding($response, 'HTML-ENTITIES', 'UTF-8'));
+        $dom->loadHTML(htmlspecialchars_decode(htmlentities($response, ENT_NOQUOTES), ENT_NOQUOTES));
         // remove errors for yucky html
         libxml_clear_errors();
         $xpath = new DOMXpath($dom);
